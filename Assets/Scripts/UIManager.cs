@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public TMPro.TextMeshProUGUI marcadorUI;
     private int marcador = 0;
 
@@ -14,10 +13,12 @@ public class UIManager : MonoBehaviour
         marcadorUI.text = "Marcador="+marcador;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (GameObject.FindGameObjectsWithTag("Obstaculo").Count()==0)
+        {
+            marcadorUI.text = "Juego terminado";
+        }
     }
 
     public void AumentarMarcador()
